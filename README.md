@@ -14,7 +14,7 @@ STM8S001J3를 **VSCode + PlatformIO** 환경에서 **Cosmic C 컴파일러**와 
     - `CXSTM8` 다운로드 → 설치 후 경로 예:
 
       ```
-      javaC:\Program Files (x86)\COSMIC\CXSTM8
+      C:\Program Files (x86)\COSMIC\CXSTM8
       ```
 
 3.  **STM8 SPL 다운로드**
@@ -36,7 +36,7 @@ STM8S001J3를 **VSCode + PlatformIO** 환경에서 **Cosmic C 컴파일러**와 
 2.  **platformio.ini 수정**
 
     ```
-    ini[env:stm8s001j3]
+    [env:stm8s001j3]
     platform = ststm8
     board = stm8s001j3
     framework = spl
@@ -57,8 +57,8 @@ PlatformIO 기본 STM8 빌드는 **SDCC** 기반이라, Cosmic을 사용하려�
 
 `extra_script.py` 생성:
 
-```markdown
-pythonimport os
+```python
+import os
 
 COSMIC_PATH = r"C:\Program Files (x86)\COSMIC\CXSTM8"
 env = DefaultEnvironment()
@@ -84,7 +84,7 @@ LINKFLAGS = ["-m", "stm8s001j3.lkf"]
 `platformio.ini`에 추가:
 
 ```
-iniextra_scripts = extra_script.py
+extra_scripts = extra_script.py
 ```
 
 ---
@@ -94,7 +94,7 @@ iniextra_scripts = extra_script.py
 PlatformIO 프로젝트 구조 예시:
 
 ```
-css├── include
+├── include
 │   └── stm8s_conf.h
 ├── lib
 │   └── STM8S_StdPeriph_Lib
@@ -113,7 +113,7 @@ css├── include
 SPL의 기능을 쓰려면 `stm8s_conf.h`를 수정:
 
 ```
-c#ifndef __STM8S_CONF_H
+#ifndef __STM8S_CONF_H
 #define __STM8S_CONF_H
 
 #include "stm8s.h"
@@ -131,7 +131,7 @@ c#ifndef __STM8S_CONF_H
 **src/main.c**
 
 ```
-c#include "stm8s.h"
+#include "stm8s.h"
 
 void delay_ms(uint16_t ms) {
     for (uint16_t i = 0; i < ms; i++) {

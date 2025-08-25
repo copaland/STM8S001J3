@@ -29,8 +29,8 @@ STM8S001J3를 **VSCode + PlatformIO** 환경에서 **Cosmic C 컴파일러**와 
 1.  **새 프로젝트 만들기**
 
     - VSCode → `PlatformIO Home` → New Project
-    - Board: `Custom`
-    - Framework: `spl` (PlatformIO에선 기본 미지원 → 직접 추가)
+    - Board: `STM8S-DISCOVERY` custom
+    - Framework: `Standard Peripheral Library` (PlatformIO에선 기본 미지원 → 직접 추가 SPL)
     - Location: 원하는 폴더.
 
 2.  **platformio.ini 수정**
